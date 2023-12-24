@@ -5,12 +5,11 @@ from django.conf import settings
  
 
 class UrlShortener(models.Model):
+    objects = None
     long_url = models.URLField(unique=True)
     short_url = models.URLField(blank=True, null=True, unique=True)
 
-
-
-def shortener(self):
+ def shortener(self):
     while True:
         random_string = "".join(choices(ascii_letters, k=6))
         new_url = settings.HOST_URL+"/"+random_string
